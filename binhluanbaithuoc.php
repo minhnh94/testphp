@@ -100,7 +100,7 @@
                 ?>
                 <div class="comment-panel">
                     <?php echo "<div class='av" .$av. "'>" .$nguoidung[0]. "</div>";?><div class="comment-space">.</div>
-                    <div class="comment-panel-name"><?php echo $nguoidung;?></div>
+                    <div class="comment-panel-name"><?php echo "<a href='chitietnguoidung.php?maNguoiDung=" .$rows2['maNguoiDung']. "'>" .$nguoidung. "</a>";?></div>
                     <div class="comment-panel-content"><?php 
                             switch ($maquyen){
                                 case 4:

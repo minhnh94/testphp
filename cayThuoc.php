@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -10,7 +13,6 @@
 ﻿<?php
         include_once 'doituong.php';
 	include_once 'database.php';
-        session_start();
         $cThuoc = new doituong();
 	$sql = "select * from caythuoc";
 	$cThuoc->query($sql);
@@ -42,7 +44,6 @@
                         <th width="48">Chủ Trị</th>
                         <th width="48">Kiêng Kỵ</th>
                         <th width="48">Tính Chất</th>
-                        <th width="48">Trạng Thái</th>	
                     </tr>
 
                     <?php
@@ -58,14 +59,19 @@
                         <td><?php echo "<a href='chitietcaythuoc.php?maCayThuoc=" .$stt. "'>" .$rows['tenCayThuoc']. "</a>";?></td>
                         <td><?php echo $rows['tenKhac'];?></td>
                         <td><?php echo $rows['tenKhoaHoc'];?></td>
-                        <td><?php echo $rows['anh'];?></td>
+                        <td><?php 
+                            if(empty($rows['anh'])||$rows['anh'] == ""){
+                                echo "Chưa có hình ảnh";
+                            } else {
+                                echo "<img src='" .$rows['anh']. "' alt='Vui lòng kết nối Internet để xem ảnh' width='100'>";
+                            }
+                        ?></td>
                         <td><?php echo $rows['ho'];?></td>
                         <td><?php echo $rows['moTa'];?></td>
                         <td><?php echo $rows['thuHai'];?></td>
                         <td><?php echo $rows['chuTri'];?></td>
                         <td><?php echo $rows['kiengKy'];?></td>
                         <td><?php echo $rows['tinhChat'];?></td>
-                        <td><?php echo $rows['trangThai'];?></td>
                     </tr>
                     <?php
                         }

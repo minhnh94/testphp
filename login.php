@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -29,7 +32,6 @@
     </head>
     <body class="login-body" data-spy="scroll" data-target=".navbar" data-offset="60">
         <?php
-            session_start();
             include_once('header.php');
             if(!empty($_SESSION['user_name'])){
                 header('Location: index.php');

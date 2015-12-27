@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `thuocdongy`
 --
-CREATE DATABASE IF NOT EXISTS `thuocdongy` DEFAULT CHARACTER SET utf8 COLLATE utf8_vietnamese_ci;
+CREATE DATABASE IF NOT EXISTS `thuocdongy` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE `thuocdongy`;
 
 -- --------------------------------------------------------
@@ -30,12 +30,12 @@ USE `thuocdongy`;
 
 CREATE TABLE `baithuoc` (
   `maBaiThuoc` int(11) NOT NULL,
-  `tenBaiThuoc` varchar(128) COLLATE utf8_vietnamese_ci NOT NULL,
-  `moTaTacDung` varchar(2048) COLLATE utf8_vietnamese_ci DEFAULT NULL COMMENT 'Mô tả về tác dụng của bài thuốc',
+  `tenBaiThuoc` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `moTaTacDung` varchar(2048) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Mô tả về tác dụng của bài thuốc',
   `maBenh` int(11) DEFAULT NULL COMMENT 'Chữa bệnh thuộc nhóm nào',
-  `cachDung` text COLLATE utf8_vietnamese_ci NOT NULL,
+  `cachDung` text COLLATE utf8_unicode_ci NOT NULL,
   `trangThai` tinyint(1) NOT NULL DEFAULT '-1' COMMENT '1:Active, 0: In Active, -1:In Processing'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `baithuoc`
@@ -57,7 +57,7 @@ CREATE TABLE `baithuoccaythuoc` (
   `maBaiThuoc` int(11) NOT NULL COMMENT 'Mã bài thuốc',
   `maCayThuoc` int(11) NOT NULL COMMENT 'Mã cây thuốc',
   `khoiLuong` int(11) NOT NULL COMMENT 'Khối lượng thuốc trong đơn'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci COMMENT='Bài thuốc';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Bài thuốc';
 
 --
 -- Dumping data for table `baithuoccaythuoc`
@@ -90,7 +90,7 @@ INSERT INTO `baithuoccaythuoc` (`maBaiThuoc`, `maCayThuoc`, `khoiLuong`) VALUES
 CREATE TABLE `baithuoctacdung` (
   `maBaiThuoc` int(11) NOT NULL COMMENT 'Mã bài thuốc',
   `maTacDung` int(11) NOT NULL COMMENT 'Mã tác dụng của bài thuốc'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci COMMENT='Các tác dụng của bài thuốc - Bảng kết nối';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Các tác dụng của bài thuốc - Bảng kết nối';
 
 -- --------------------------------------------------------
 
@@ -100,10 +100,10 @@ CREATE TABLE `baithuoctacdung` (
 
 CREATE TABLE `baiviet` (
   `maBaiViet` mediumint(9) NOT NULL COMMENT 'Mã bài viết',
-  `tenBaiViet` varchar(256) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL COMMENT 'Tên bài viết',
-  `tomTat` varchar(1024) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL COMMENT 'Tóm tắt',
-  `anhMinhHoa` varchar(256) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL COMMENT 'Ảnh minh họa',
-  `noiDung` mediumtext CHARACTER SET utf8 COLLATE utf8_vietnamese_ci COMMENT 'Nội dung bài viết',
+  `tenBaiViet` varchar(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'Tên bài viết',
+  `tomTat` varchar(1024) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Tóm tắt',
+  `anhMinhHoa` varchar(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Ảnh minh họa',
+  `noiDung` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT 'Nội dung bài viết',
   `maNguoiDung` int(11) NOT NULL,
   `ngayViet` datetime NOT NULL DEFAULT '2014-01-01 00:00:00',
   `trangThai` int(1) NOT NULL DEFAULT '-1' COMMENT '1:Active, 0: Inactive, -1:In processing'
@@ -257,8 +257,8 @@ INSERT INTO `baiviet` (`maBaiViet`, `tenBaiViet`, `tomTat`, `anhMinhHoa`, `noiDu
 
 CREATE TABLE `benh` (
   `maBenh` int(11) NOT NULL COMMENT 'Mã bệnh',
-  `tenBenh` varchar(128) COLLATE utf8_vietnamese_ci NOT NULL COMMENT 'Tên bệnh'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci COMMENT='Bảng bệnh';
+  `tenBenh` varchar(128) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Tên bệnh'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Bảng bệnh';
 
 --
 -- Dumping data for table `benh`
@@ -335,9 +335,9 @@ INSERT INTO `benh` (`maBenh`, `tenBenh`) VALUES
 CREATE TABLE `binhluanbaithuoc` (
   `maBaiThuoc` int(11) NOT NULL,
   `maNguoiDung` int(11) NOT NULL COMMENT 'Mã bài thuốc gắn với bình luận',
-  `noiDung` varchar(2048) COLLATE utf8_vietnamese_ci DEFAULT NULL COMMENT 'Nội dung bình luận',
+  `noiDung` varchar(2048) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Nội dung bình luận',
   `ngayBinhLuan` date NOT NULL COMMENT 'Ngày giờ bình luận'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `binhluanbaithuoc`
@@ -364,18 +364,18 @@ INSERT INTO `binhluanbaithuoc` (`maBaiThuoc`, `maNguoiDung`, `noiDung`, `ngayBin
 
 CREATE TABLE `caythuoc` (
   `maCayThuoc` int(11) UNSIGNED ZEROFILL NOT NULL COMMENT 'Mã cây thuốc',
-  `tenCayThuoc` varchar(256) COLLATE utf8_vietnamese_ci NOT NULL COMMENT 'Tên thường gọi',
-  `tenKhac` varchar(256) COLLATE utf8_vietnamese_ci DEFAULT NULL COMMENT 'Tên khác',
-  `tenKhoaHoc` varchar(256) COLLATE utf8_vietnamese_ci DEFAULT NULL COMMENT 'Tên khoa học',
-  `anh` varchar(256) COLLATE utf8_vietnamese_ci DEFAULT NULL COMMENT 'Đường dẫn đến ảnh cây thuốc',
-  `ho` varchar(128) COLLATE utf8_vietnamese_ci DEFAULT NULL COMMENT 'Phân họ cây thuốc',
-  `moTa` text COLLATE utf8_vietnamese_ci COMMENT 'Mô tả cây thuốc',
-  `thuHai` text COLLATE utf8_vietnamese_ci COMMENT 'Phân bố, thu hái và chế biến ',
-  `chuTri` text COLLATE utf8_vietnamese_ci COMMENT 'Chủ trị',
-  `kiengKy` text COLLATE utf8_vietnamese_ci COMMENT 'Kiêng kỵ',
-  `tinhChat` text COLLATE utf8_vietnamese_ci COMMENT 'Tính chất cây thuốc',
+  `tenCayThuoc` varchar(256) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Tên thường gọi',
+  `tenKhac` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Tên khác',
+  `tenKhoaHoc` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Tên khoa học',
+  `anh` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Đường dẫn đến ảnh cây thuốc',
+  `ho` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Phân họ cây thuốc',
+  `moTa` text COLLATE utf8_unicode_ci COMMENT 'Mô tả cây thuốc',
+  `thuHai` text COLLATE utf8_unicode_ci COMMENT 'Phân bố, thu hái và chế biến ',
+  `chuTri` text COLLATE utf8_unicode_ci COMMENT 'Chủ trị',
+  `kiengKy` text COLLATE utf8_unicode_ci COMMENT 'Kiêng kỵ',
+  `tinhChat` text COLLATE utf8_unicode_ci COMMENT 'Tính chất cây thuốc',
   `trangThai` int(3) NOT NULL DEFAULT '0' COMMENT '1:Active, 0: Inactive, -1:In processing'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `caythuoc`
@@ -1145,7 +1145,7 @@ INSERT INTO `caythuoc` (`maCayThuoc`, `tenCayThuoc`, `tenKhac`, `tenKhoaHoc`, `a
 CREATE TABLE `caythuocbenh` (
   `maCaythuoc` int(11) NOT NULL COMMENT 'Mã cây thuốc',
   `maBenh` int(11) NOT NULL COMMENT 'Mã bệnh'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci COMMENT='Bảng Cây thuốc - Bệnh';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Bảng Cây thuốc - Bệnh';
 
 -- --------------------------------------------------------
 
@@ -1156,7 +1156,7 @@ CREATE TABLE `caythuocbenh` (
 CREATE TABLE `caythuoctacdung` (
   `maCayThuoc` int(11) NOT NULL COMMENT 'Mã cây thuốc',
   `maTacDung` int(11) NOT NULL COMMENT 'Mã tác dụng'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci COMMENT='Bảng Cây thuốc - Tác dụng';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Bảng Cây thuốc - Tác dụng';
 
 -- --------------------------------------------------------
 
@@ -1167,10 +1167,10 @@ CREATE TABLE `caythuoctacdung` (
 CREATE TABLE `log` (
   `ngayTraCuu` date NOT NULL COMMENT 'Ngày tra cứu',
   `maNguoiDung` int(11) NOT NULL COMMENT 'Mã người tra cứu',
-  `ip` varchar(14) COLLATE utf8_vietnamese_ci NOT NULL COMMENT 'Địa chỉ IP của máy khách',
-  `tuKhoa` varchar(256) COLLATE utf8_vietnamese_ci NOT NULL COMMENT 'Từ khóa tra cứu',
-  `ghiChu` varchar(256) COLLATE utf8_vietnamese_ci NOT NULL COMMENT 'Ghi chú: Tên miền máy khách...'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci COMMENT='Bảng ghi chép thông tin thống kê';
+  `ip` varchar(14) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Địa chỉ IP của máy khách',
+  `tuKhoa` varchar(256) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Từ khóa tra cứu',
+  `ghiChu` varchar(256) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Ghi chú: Tên miền máy khách...'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Bảng ghi chép thông tin thống kê';
 
 --
 -- Dumping data for table `log`
@@ -1195,12 +1195,12 @@ CREATE TABLE `nguoidung` (
   `maNguoiDung` int(11) NOT NULL COMMENT 'Mã người dùng',
   `tenDangNhap` varchar(24) CHARACTER SET ascii COLLATE ascii_bin NOT NULL COMMENT 'Tên đăng nhập',
   `matKhau` varchar(32) CHARACTER SET ascii COLLATE ascii_bin NOT NULL COMMENT 'Mật khẩu',
-  `hoTen` varchar(35) COLLATE utf8_vietnamese_ci NOT NULL COMMENT 'Họ tên',
+  `hoTen` varchar(35) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Họ tên',
   `email` varchar(128) CHARACTER SET ascii COLLATE ascii_bin NOT NULL COMMENT 'Email',
   `maQuyen` int(11) NOT NULL COMMENT 'Mã quyền',
   `ngayDangKy` date NOT NULL COMMENT 'Ngày đăng ký',
   `trangThai` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Trạng thái kích hoạt (1:Active, 0: Inactive, -1:Banned)'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci COMMENT='Bảng người dùng';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Bảng người dùng';
 
 --
 -- Dumping data for table `nguoidung`
@@ -1223,8 +1223,8 @@ INSERT INTO `nguoidung` (`maNguoiDung`, `tenDangNhap`, `matKhau`, `hoTen`, `emai
 
 CREATE TABLE `quyen` (
   `maQuyen` smallint(6) NOT NULL COMMENT 'Mã quyền',
-  `tenQuyen` varchar(24) COLLATE utf8_vietnamese_ci NOT NULL COMMENT 'Tên quyền'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci COMMENT='Bảng quyền';
+  `tenQuyen` varchar(24) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Tên quyền'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Bảng quyền';
 
 --
 -- Dumping data for table `quyen`
@@ -1244,8 +1244,8 @@ INSERT INTO `quyen` (`maQuyen`, `tenQuyen`) VALUES
 
 CREATE TABLE `tacdung` (
   `maTacDung` int(11) NOT NULL COMMENT 'Mã tác dụng',
-  `tenTacDung` varchar(128) COLLATE utf8_vietnamese_ci NOT NULL COMMENT 'Tên tác dụng'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci COMMENT='Bảng tác dụng - cây thuốc';
+  `tenTacDung` varchar(128) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Tên tác dụng'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Bảng tác dụng - cây thuốc';
 
 --
 -- Dumping data for table `tacdung`
@@ -1292,12 +1292,12 @@ INSERT INTO `tacdung` (`maTacDung`, `tenTacDung`) VALUES
 
 CREATE TABLE `vithuoc` (
   `maViThuoc` int(5) UNSIGNED ZEROFILL NOT NULL COMMENT 'Mã cây thuốc',
-  `tenViThuoc` varchar(32) COLLATE utf8_vietnamese_ci NOT NULL COMMENT 'Tên thường gọi',
-  `chuTri` text COLLATE utf8_vietnamese_ci NOT NULL COMMENT 'Chủ trị',
-  `kiengKy` text COLLATE utf8_vietnamese_ci COMMENT 'Kiêng kỵ',
-  `tinhChat` text COLLATE utf8_vietnamese_ci COMMENT 'Tính chất cây thuốc',
+  `tenViThuoc` varchar(32) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Tên thường gọi',
+  `chuTri` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'Chủ trị',
+  `kiengKy` text COLLATE utf8_unicode_ci COMMENT 'Kiêng kỵ',
+  `tinhChat` text COLLATE utf8_unicode_ci COMMENT 'Tính chất cây thuốc',
   `maThamChieu` int(5) NOT NULL COMMENT 'Mã tham chiếu đến cây thuốc'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `vithuoc`

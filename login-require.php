@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+    session_start();
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -13,13 +15,12 @@
         
         <?php
             include_once('header.php');
-            session_start();
 	?>
         
         <div class="center-white">
             Vui lòng đăng nhập để sử dụng các chức năng nâng cao của hệ thống.<br>
             <br>Xin cảm ơn.
-        
+        </div>
         <?php
             include_once('footer.php');
 	?>

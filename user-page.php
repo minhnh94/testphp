@@ -161,6 +161,8 @@
                     <?php
                     if($maquyen == 3||$maquyen == 4){
                         echo "<a href='manager.php'><button class='user-button'>Chức năng quản lý</button></a>";
+                    } else {
+                        echo "<a href='request-promotion.php'><button class='user-button'>Đăng ký làm người quản lý</button></a>";
                     }
                     if($maquyen == 4){
                         echo "<a href='admin-board.php'><button class='user-button'>Bảng quản trị</button></a>";

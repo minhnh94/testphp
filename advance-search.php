@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -12,30 +15,30 @@
 </head>
     <body>
         <div class="white-trans-container">
-        <?php
-            session_start();
-            include_once('header.php');
-            ob_start();
-            include '__autoload.php';
+        <?php            
             if(empty($_SESSION['user_name'])){
                 header('Location: login-require.php');
+            } else {
+                include_once('header.php');
             }
+            ob_start();
+            include '__autoload.php';
 	?>
             <div class="search-panel">
                 <div class="header-panel">
                     <h3>TÌM KIẾM NÂNG CAO</h3>
                 </div>
                 <table class="search-table">
-                    <tr>
-                        <td class="left-td">Từ khóa 1</td>
-                        <td><input type="text" id="keyword1" class="search-field"/></td>
-                        <td>
+                    <tr class="no-border-padding5">
+                        <td class="left-td no-border-padding5">Từ khóa 1</td>
+                        <td class="no-border-padding5"><input type="text" id="keyword1" class="search-field"/></td>
+                        <td class="no-border-padding5">
                             <select id="by1" class="search-type">
                                 <option value="1">Tên</option>
                                 <option value="2">ID</option>
                             </select>
                         </td>
-                        <td>
+                        <td class="no-border-padding5">
                             <select id="type1" class="search-type">
                                 <option class="none-opt">[--Chọn tiêu chí chính--]</option>
                                 <option value="1">Bài thuốc</option>
@@ -47,16 +50,16 @@
                             </select>
                         </td>
                     </tr>
-                        <tr>
-                        <td class="left-td">Từ khóa 2</td>
-                        <td><input type="text" id="keyword2" class="search-field"/></td>
-                        <td>
+                        <tr class="no-border-padding5">
+                        <td class="left-td no-border-padding5">Từ khóa 2</td>
+                        <td class="no-border-padding5"><input type="text" id="keyword2" class="search-field"/></td>
+                        <td class="no-border-padding5">
                             <select id="by2" class="search-type">
                                 <option value="1">Tên</option>
                                 <option value="2">ID</option>
                             </select>
                         </td>
-                        <td>
+                        <td class="no-border-padding5">
                             <select id="type2" class="search-type">
                                 <option class="none-opt">[--Chọn tiêu chí phụ--]</option>
                                 <option value="1">Bài thuốc</option>
@@ -240,7 +243,7 @@
                             default:
                                 break;
                         }
-                        urlString += "theo1=" + theo1 + "&bang1=" + bang1 + "&theo2=" + theo2 + "&bang2=" + bang2 + "&keyword1=" + keyword1 + "&keyword2=" + keyword2 + "&table=" + selectedType1;
+                        urlString += "theo1=" + theo1 + "&bang1=" + bang1 + "&theo2=" + theo2 + "&bang2=" + bang2 + "&keyword1=" + keyword1 + "&keyword2=" + keyword2 + "&table1=" + selectedType1 + "&table2=" + selectedType2;
                         alert(urlString);
                         var request = $.ajax({
                             url: "" + urlString,
